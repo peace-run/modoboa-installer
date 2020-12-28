@@ -3,7 +3,7 @@
 ##
 
 # SSL/TLS support: yes, no, required. <doc/wiki/SSL.txt>
-#ssl = yes
+ssl = required
 
 # PEM encoded X.509 SSL/TLS certificate and private key. They're opened before
 # dropping root privileges, so keep the key file unreadable by anyone but
@@ -41,8 +41,8 @@ ssl_key = <%tls_key_file
 #ssl_parameters_regenerate = 168
 
 # SSL protocols to use
-ssl_protocols = %ssl_protocols
-
+# ssl_protocols = %ssl_protocols
+ssl_min_protocol = TLSv1.2
 
 # SSL ciphers to use
 ssl_cipher_list = EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH+aRSA+RC4:EECDH:EDH+aRSA:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!RC4

@@ -48,8 +48,8 @@ smtpd_tls_security_level = may
 smtpd_tls_received_header = yes
 
 # Disallow SSLv2 and SSLv3, only accept secure ciphers
-smtpd_tls_protocols = !SSLv2, !SSLv3
-smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
+smtpd_tls_protocols = TLSv1.2, !TLSv1.1, !TLSv1, !SSLv2, !SSLv3
+smtpd_tls_mandatory_protocols = TLSv1.2, !TLSv1.1, !TLSv1, !SSLv2, !SSLv3
 smtpd_tls_mandatory_ciphers = high
 smtpd_tls_mandatory_exclude_ciphers = aNULL, MD5 , DES, ADH, RC4, PSD, SRP, 3DES, eNULL
 smtpd_tls_exclude_ciphers = aNULL, MD5 , DES, ADH, RC4, PSD, SRP, 3DES, eNULL

@@ -18,26 +18,26 @@ dnsblog   unix  -       -       -       -       0       dnsblog
 tlsproxy  unix  -       -       -       -       0       tlsproxy
 submission inet n       -       -       -       -       smtpd
   -o syslog_name=postfix/submission
-  -o smtpd_tls_security_level=encrypt
+  -o smtpd_tls_security_level=may
   -o tls_preempt_cipherlist=yes
   -o smtpd_sasl_auth_enable=yes
   -o smtpd_reject_unlisted_recipient=no
-  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+  -o smtpd_client_restrictions=permit_mynetworks,permit_sasl_authenticated,reject
   -o smtpd_helo_restrictions=
   -o smtpd_sender_restrictions=reject_sender_login_mismatch
   -o milter_macro_daemon_name=ORIGINATING
 %{amavis_enabled}  -o smtpd_proxy_filter=inet:[127.0.0.1]:10026
-#smtps     inet  n       -       -       -       -       smtpd
-#  -o syslog_name=postfix/smtps
-#  -o smtpd_tls_wrappermode=yes
-#  -o smtpd_sasl_auth_enable=yes
-#  -o smtpd_reject_unlisted_recipient=no
-#  -o smtpd_client_restrictions=$mua_client_restrictions
-#  -o smtpd_helo_restrictions=$mua_helo_restrictions
-#  -o smtpd_sender_restrictions=$mua_sender_restrictions
-#  -o smtpd_recipient_restrictions=
-#  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
-#  -o milter_macro_daemon_name=ORIGINATING
+smtps     inet  n       -       -       -       -       smtpd
+  -o syslog_name=postfix/smtps
+  -o smtpd_tls_wrappermode=yes
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_reject_unlisted_recipient=no
+  -o smtpd_client_restrictions=$mua_client_restrictions
+  -o smtpd_helo_restrictions=$mua_helo_restrictions
+  -o smtpd_sender_restrictions=$mua_sender_restrictions
+  -o smtpd_recipient_restrictions=
+  -o smtpd_relay_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
 #628       inet  n       -       -       -       -       qmqpd
 pickup    unix  n       -       -       60      1       pickup
 cleanup   unix  n       -       -       -       0       cleanup

@@ -18,8 +18,8 @@ result_attrs = display_name, email
 
 smtp = yes
 smtp_server = %hostname
-smtp_port = 587
-smtp_encryption = starttls
+smtp_port = 465
+smtp_encryption = ssl
 smtp_auth = plaintext
 smtp_auth_identity = ${email}
 smtp_refresh_ttl = 6
@@ -27,15 +27,10 @@ smtp_default = yes
 
 imap = yes
 imap_server = %hostname
-imap_port = 143
-imap_encryption = starttls
+imap_port = 993
+imap_encryption = ssl
 imap_auth = plaintext
 imap_auth_identity = ${email}
 imap_refresh_ttl = 6
 
-pop = yes
-pop_server = %hostname
-pop_port = 110
-pop_encryption = starttls
-pop_auth = plaintext
-pop_auth_identity = ${email}
+pop = no
